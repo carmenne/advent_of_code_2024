@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 dist1 = []
 dist2 = []
 
@@ -11,11 +13,11 @@ with open(input_file, "r") as file:
 similarity = 0
 
 # calculate freq
-freq = {}
+freq = defaultdict()
 for dist in dist2:
-    freq[dist] = freq.get(dist, 0) + 1
+    freq[dist] += 1
 
 for dist in dist1:
-    similarity += dist * freq.get(dist, 0)
+    similarity += freq[dist]
 
 print(similarity)
