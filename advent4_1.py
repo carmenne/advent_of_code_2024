@@ -1,10 +1,7 @@
 
-def dfs(chars, m, n, i, j, word, visited, i_prev, j_prev, direction):
+def dfs(chars, m, n, i, j, word, i_prev, j_prev, direction):
 
     if i >= m or j >= n or i < 0 or j < 0:
-        return 0
-
-    if visited[i][j]:
         return 0
 
     if direction == "UP_LEFT" and not (i == i_prev - 1 and j  == j_prev - 1):
@@ -26,7 +23,6 @@ def dfs(chars, m, n, i, j, word, visited, i_prev, j_prev, direction):
 
     letter = chars[i][j]
     word += letter
-    visited[i][j] = True
 
     if letter not in "XMAS":
         return 0
@@ -45,14 +41,14 @@ def dfs(chars, m, n, i, j, word, visited, i_prev, j_prev, direction):
     xmas_count = 1 if word == "XMAS" else 0
 
     return xmas_count + \
-            + dfs(chars, m, n, i - 1, j - 1, word, visited, i, j, "UP_LEFT" if direction == "" else direction) \
-            + dfs(chars, m, n, i - 1, j, word, visited, i, j, "UP" if direction == "" else direction) \
-            + dfs(chars, m, n, i - 1, j + 1, word, visited, i, j, "UP_RIGHT" if direction == "" else direction) \
-            + dfs(chars, m, n, i, j - 1, word, visited, i, j, "LEFT" if direction == "" else direction) \
-            + dfs(chars, m, n, i, j + 1, word, visited, i, j, "RIGHT" if direction == "" else direction) \
-            + dfs(chars, m, n, i + 1, j - 1, word, visited, i, j, "BOTTOM_LEFT" if direction == "" else direction) \
-            + dfs(chars, m, n, i + 1, j, word, visited, i, j, "BOTTOM" if direction == "" else direction) \
-            + dfs(chars, m, n, i + 1, j + 1, word, visited, i, j, "BOTTOM_RIGHT" if direction == "" else direction)
+            + dfs(chars, m, n, i - 1, j - 1, word, i, j, "UP_LEFT" if direction == "" else direction) \
+            + dfs(chars, m, n, i - 1, j, word, i, j, "UP" if direction == "" else direction) \
+            + dfs(chars, m, n, i - 1, j + 1, word, i, j, "UP_RIGHT" if direction == "" else direction) \
+            + dfs(chars, m, n, i, j - 1, word, i, j, "LEFT" if direction == "" else direction) \
+            + dfs(chars, m, n, i, j + 1, word, i, j, "RIGHT" if direction == "" else direction) \
+            + dfs(chars, m, n, i + 1, j - 1, word, i, j, "BOTTOM_LEFT" if direction == "" else direction) \
+            + dfs(chars, m, n, i + 1, j, word, i, j, "BOTTOM" if direction == "" else direction) \
+            + dfs(chars, m, n, i + 1, j + 1, word, i, j, "BOTTOM_RIGHT" if direction == "" else direction)
 
 
 letters = []
@@ -65,7 +61,7 @@ with open("input.txt", "r") as file:
     column = len(letters[0])
     for x in range(row):
         for y in range(column):
-            if letters[x][y] == "X":
-                xmas += dfs(letters, row, column, x, y, "", [[False for _ in range(column)] for _ in range(row)], x, y, "")
+            if letters[x][y] == "X": # top-left of the form
+                xmas += dfs(letters, row, column, x, y, "",  x, y, "")
 
     print(xmas)
