@@ -1,5 +1,3 @@
-from filecmp import dircmp
-
 moves = []
 right = {"^": ">", ">": "v", "v": "<", "<": "^"}
 
