@@ -2,16 +2,6 @@ disk_map = ""
 
 expanded = []
 
-def find_to_fill(start, end):
-    m = len(occ) - 1
-    while m >= 0:
-        l, file_index = occ[m]
-        if occ[m] != (-1, -1) and l <= end - start + 1:
-            occ[m] = (-1, -1)
-            return m, l, file_index
-        m -= 1
-
-
 with open("input.txt") as file:
     disk_map = file.read().replace("\n", "")
 
