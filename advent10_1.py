@@ -14,9 +14,9 @@ def hike(i, j):
         hike(i + 1, j)
     if i - 1 >= 0 and trail[i - 1][j] == position + 1:  # UP
         hike(i - 1, j)
-    if  j - 1 >= 0 and trail[i][j - 1] == position + 1:
+    if  j - 1 >= 0 and trail[i][j - 1] == position + 1: # LEFT
         hike(i, j - 1)
-    if j + 1 < n and trail[i][j + 1] == position + 1:
+    if j + 1 < n and trail[i][j + 1] == position + 1: #RIGHT
         hike(i, j + 1)
 
 
