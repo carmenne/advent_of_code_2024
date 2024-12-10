@@ -11,16 +11,12 @@ def hike(i, j):
         nines.add((i, j))
 
     if i + 1 < m and trail[i + 1][j] == position + 1:  # DOWN
-        print("DOWN", i, j)
         hike(i + 1, j)
     if i - 1 >= 0 and trail[i - 1][j] == position + 1:  # UP
-        print("UP", i, j)
         hike(i - 1, j)
     if  j - 1 >= 0 and trail[i][j - 1] == position + 1:
-        print("LEFT", i, j)# LEFT
         hike(i, j - 1)
     if j + 1 < n and trail[i][j + 1] == position + 1:
-        print("RIGHT", i, j)# RIGHT
         hike(i, j + 1)
 
 
