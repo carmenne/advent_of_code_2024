@@ -9,3 +9,4 @@
 |7|02:37:19|13225|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent7_1.py)|02:49:41|12272|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent7_2.py)|
 |8|03:14:33|13580|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent8_1.py)|04:07:35|14239|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent8_2.py)|
 |9|01:01:53|7327|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent9_1.py)|06:52:58|15150|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent9_2.py)|
+|10|01:45:47|10391|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent10_1.py)|01:57:45|10270|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent10_2.py)|
