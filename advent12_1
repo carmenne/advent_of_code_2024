@@ -1,0 +1,44 @@
+plants = []
+with open("input.txt", "r") as file:
+    plants += [list(line.strip()) for line in file]
+
+m = len(plants)
+n = len(plants[0])
+
+dist = {(-1, 0), (0, -1), (0, 1), (1, 0)}
+
+def in_bounds(i, j):
+    return 0 <= i < m and 0 <= j < n
+
+def area(i, j, visited, plant):
+    if i >= m or j >= n or i < 0 or j < 0:
+        return 0, 0
+    if visited[i][j]:
+        return 0, 0
+
+    visited[i][j] = True
+    count = 1
+    fences = 0
+
+    for dx, dy in dist:
+        x = i + dx
+        y = j + dy
+        if not in_bounds(x, y) or plants[x][y] != plant:
+            fences +=1
+        else:
+            sub_count, sub_fence = area(x, y, visited, plant)
+            count += sub_count
+            fences += sub_fence
+
+    return count, fences
+
+
+visited = [[False for _ in range(m)] for _ in range(n)]
+total = 0
+for i in range(m):
+    for j in range(n):
+        region_count, region_fence = area(i, j, visited, plants[i][j])
+        if region_count > 0:
+            total += region_count * region_fence
+
+print("Total", total)
