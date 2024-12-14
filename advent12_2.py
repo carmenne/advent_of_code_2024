@@ -10,10 +10,8 @@ n = len(plants[0])
 dist = {(-1, 0, "D"), (0, -1, "L"), (0, 1, "R"), (1, 0, "U")}
 new_dist = {(0, -1, "L"), (1, 0, "U")}
 
-
 def in_bounds(i, j):
     return 0 <= i < m and 0 <= j < n
-
 
 def area(i, j, plant):
     if i >= m or j >= n or i < 0 or j < 0:
@@ -27,13 +25,11 @@ def area(i, j, plant):
 
     for dx, dy, d in dist:
         nx, ny = i + dx, j + dy
-        if not in_bounds(nx, ny) or plants[i][j] != plants[nx][ny]:
-            directions[(i, j)].add(d)
         if in_bounds(nx, ny) and plants[nx][ny] == plant:
             count += area(nx, ny, plant)
-
+        else:
+            directions[(i, j)].add(d)
     return count
-
 
 def none(pot, neighbours):
     x, y, d = pot
@@ -41,7 +37,6 @@ def none(pot, neighbours):
         if (x + dx, y + dy, d) in neighbours:
             return False
     return True
-
 
 def count_distinct():
     count = 0
@@ -54,10 +49,8 @@ def count_distinct():
                     if (k + dx, l + dy) in directions
                     for nd in directions[k + dx, l + dy]
                 }
-
                 count += sum(1 for d in directions[(k, l)] if none((k, l, d), neighbours))
     return count
-
 
 visited = [[False for _ in range(m)] for _ in range(n)]
 total = 0
