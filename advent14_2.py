@@ -1,3 +1,6 @@
+import time
+
+
 def print_grid(grid):
     for row in grid:
         for j in range(N):
@@ -36,12 +39,13 @@ def search_egg(s):
 
     for a in range(M - 3):
         for b in range(N - 3):
-            if sum3(a, b, new_positions) >= 9:
-                print("Seconds", s)
+            if sum3(a, b, new_positions) == 9:
+                print("Seconds", s + 1)
                 print_grid(new_positions)
                 break
 
 
+start_time = time.time()
 for s in range(10000):
     for k in range(len(robots)):
         (px, py), (vx, vy) = robots[k]
@@ -49,33 +53,6 @@ for s in range(10000):
         new_py = (py + vy if py + vy > 0 else (M - abs(py + vy)) ) % M
         robots[k] = ((new_px, new_py), (vx, vy))
     search_egg(s)
-
-for robot in robots:
-    p, v = robot
-    py, px = p
-    positions[px][py] += 1
-
-m_mid = M // 2
-n_mid = N // 2
-
-q1 = 0
-for i in range(0, m_mid):
-    for j in range(0, n_mid):
-        q1 += positions[i][j]
-
-q2 = 0
-for i in range(0, m_mid):
-    for j in range(n_mid + 1, N):
-        q2 += positions[i][j]
-
-q3 = 0
-for i in range(m_mid + 1, M):
-    for j in range(0, n_mid):
-        q3 += positions[i][j]
-
-q4 = 0
-for i in range(m_mid + 1, M):
-    for j in range(n_mid + 1, N):
-        q4 += positions[i][j]
-
-print(q1, q2, q3, q4, q1*q2*q3*q4)
+end_time = time.time()
+runtime = end_time - start_time
+print(f"Runtime: {runtime:.6f} seconds")
