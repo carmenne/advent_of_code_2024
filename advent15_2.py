@@ -15,6 +15,7 @@ moves = [direction[m] for m in moves_input]  # <^^>>>vv<v>>v<<
 M = len(warehouse)
 N = len(warehouse[0])
 
+
 def print_grid(grid):
     for row in grid:
         for col in row:
@@ -24,6 +25,7 @@ def print_grid(grid):
 
 def in_bounds(i, j):
     return 0 <= i < M and 0 <= j < 2 * N
+
 
 wide = [["+" for _ in range(2 * N)] for _ in range(M)]
 
@@ -69,24 +71,20 @@ def can_move_box(pos, move):
 
     return False
 
-def move_it(c, d, a, b):
-    wide[c][d] = wide[a][b]
-    wide[a][b] = "."
-
-def move_box(pos, move):
+def move_box(pos, move, new_moves):
     x, y = pos
     mx, my = move
     new_x, new_y = x + mx, y + my
 
     if wide[new_x][new_y] == "]" and wide[new_x][new_y - 1] == "[":
-        move_box((new_x, new_y), move)
-        move_box((new_x, new_y - 1), move)
+        move_box((new_x, new_y), move, new_moves)
+        move_box((new_x, new_y - 1), move, new_moves)
     elif wide[new_x][new_y] == "[" and wide[new_x][new_y + 1] == "]":
-        move_box((new_x, new_y), move)
-        move_box((new_x, new_y + 1), move)
+        move_box((new_x, new_y), move, new_moves)
+        move_box((new_x, new_y + 1), move, new_moves)
 
     if in_bounds(new_x, new_y):
-        move_it(new_x, new_y, x, y)
+        new_moves[(x, y)] = (new_x, new_y)  # I am such an idiot
 
 for mx, my in moves:
     x, y = robo
@@ -120,7 +118,13 @@ for mx, my in moves:
         can_move = can_move_box((x, y), (mx, my))
         if can_move:
             new_moves = {}
-            move_box((x, y), (mx, my))
+            move_box((x, y), (mx, my), new_moves)
+            to_move = sorted(new_moves) if mx == -1 else reversed(sorted(new_moves))
+            for fr in to_move:
+                fr_x, fr_y = fr
+                to_x, to_y = new_moves[fr]
+                wide[to_x][to_y] = wide[fr_x][fr_y]
+                wide[fr_x][fr_y] = "."
             robo = (x + mx, y + my)
 
 print_grid(wide)
@@ -131,4 +135,4 @@ for i in range(M):
         if wide[i][j] in '[':
             boxes += 100 * i + j
 
-print(boxes) #1509724
+print(boxes)
