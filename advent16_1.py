@@ -34,19 +34,13 @@ def in_bounds(x, y):
     return 0 <= x < N and 0 <= y < M
 
 min_cost = float('inf')
-queue = [(start[0], start[1], 1, 0, set())]
-unique_tiles = set()
+queue = [(start[0], start[1], 1, 0)]
 while queue:
-    i, j, curr, cost, tiles = queue.pop(0)
+    i, j, curr, cost = queue.pop(0)
     if maze[i][j] == "#":
         continue
     if maze[i][j] == "E":
-        if cost < min_cost:
-            min_cost = cost
-        elif cost == min_cost:
-            
-        else:
-            tiles = set()
+        min_cost = min(cost, min_cost)
 
     if (i, j, curr) in memo and memo[(i, j, curr)] <= cost:
         continue
@@ -54,8 +48,7 @@ while queue:
     memo[(i, j, curr)] = cost
     # Move forward
     ci, cj = direction[curr]
-    ni, nj = i + ci, j + cj
-    if maze[i]
+
     queue.append((i + ci, j + cj, curr, cost + 1))
     # Turn left
     queue.append((i, j, (curr - 1) % 4, cost + 1000))
