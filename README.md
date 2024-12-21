@@ -16,9 +16,9 @@
 |14|02:40:37|9569|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent14_1.py)|03:33:23|8154|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent14_2.py)|
 |15|01:37:44|6500|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent15_1.py)|05:34:00|6964|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent15_2.py)|
 |16|10:54:57|15793|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent16_1.py)|15:27:51|14344|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent16_2.py)|
-|17|01:40:43|6291|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent17_1.py)|>24h|18223|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent17_2.py)|
+|17|01:40:43|6291|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent17_1.py)|>24h|18223|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent17_1.py)|
 |18|05:28:42|12762|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent18_1.py)|07:44:29|14127|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent18_2.py)|
 |19|01:40:52|6533|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent19_1.py)|09:24:57|14324|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent19_2.py)|
 |20|01:18:57|4045|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent20_1.py)|>24h|16392|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent20_2.py)|
-|21|07:00:54|5114|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent21_1.py)|09:21:54|3771|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent21_2.py)|
+|21|07:00:54|5114|0|[Solution1](https://github.com/carmenne/advent_of_code_2024/blob/main/advent21_2.py)|09:21:54|3771|0|[Solution2](https://github.com/carmenne/advent_of_code_2024/blob/main/advent21_2.py)|
 
