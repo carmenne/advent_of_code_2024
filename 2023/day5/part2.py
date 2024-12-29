@@ -15,28 +15,23 @@ with open("input_long.txt", "r") as file:
 
 
 def get_mapped(intervals, mappings):
-    segments = set()
-    segments_out = []
-    for interval in sorted(intervals):
-        mappings.sort(key=lambda x: x[1])
-        for mapping in mappings:
-            segments_in = [interval] if not segments_out else segments_out.copy()
-            print("Segments in", segments_in, mapping)
-            segments_out = []
-            for segm_in in segments_in:
-                x1, x2 = segm_in
-                one_interval = apply_one_interval(mapping, x1, x2)
-                segments_out += one_interval
-        segments = segments.union(set(segments_out))
-        segments_out = []
+    mappings.sort(key=lambda x: x[1])
 
-    return sorted(segments)
+    for mapping in mappings:
+        queue = intervals.copy()
+        intervals = []
+
+        while queue:
+            intervals.extend(apply_interval(mapping, queue.pop(0)))
+
+    return intervals
 
 
-def apply_one_interval(mapping, x1, x2):
+def apply_interval(mapping, interval):
     d, s, r = mapping
     m1 = s
     m2 = s + r
+    x1, x2 = interval
     if m1 <= x1 <= x2 <= m2:  # m1, x1, x2, m2
         res1 = x1 + d - s
         res2 = x2 + d - s
