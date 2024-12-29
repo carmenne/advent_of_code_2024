@@ -15,3 +15,10 @@ for i in range(time + 1):
         product += 1
 
 print(product)
+
+# Quadratic equation
+delta = math.sqrt(time ** 2 - 4 * distance)
+d1 = (time - delta) // 2
+d2 = (time + delta) // 2
+
+print(d2 - d1) # 30077773
