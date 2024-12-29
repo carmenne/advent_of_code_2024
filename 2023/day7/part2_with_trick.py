@@ -5,26 +5,13 @@ with open("input_long.txt", "r") as file:
     for line in file:
         card, bid = line.strip().split(" ")
         camel_cards.append((card, int(bid)))
-
-
-def put_J_end(cards):
-    new_cards = ""
-    js = ""
-    for card in cards:
-        if card == "J":
-            js += "J"
-        else:
-            new_cards += card
-
-    return new_cards + js
-
+        
 
 def get_hand_type(cards):
     distinct = defaultdict(int)
-    cards = put_J_end(cards)
+    cards = "".join(sorted(list(cards), reverse=True, key=get_card_score))
     for card in cards:
         if card == "J" and distinct:
-            print(cards)
             max_freq = max(distinct, key=distinct.get)
             distinct[max_freq] += 1
         else:
