@@ -38,6 +38,8 @@ def move_next(pipe, x, y, from_x, from_y):
 
 
 path = {}
+
+
 def find_loop(area, start):
     not_stared = True
     distance = 0
@@ -56,6 +58,7 @@ def find_loop(area, start):
 
     return distance
 
+
 M = len(pipes)
 N = len(pipes[0])
 start = find_start(pipes)
@@ -73,6 +76,7 @@ def print_grid(grid):
 
 
 memo = {}
+
 
 def fill(start, type):
     queue = [start]
@@ -149,4 +153,15 @@ inside = 0
 outside = 0
 total = 0
 
+for i in range(M):
+    for j in range(N):
+        if pipes[i][j] == "I":
+            inside += 1
+        if pipes[i][j] == "O":
+            outside += 1
+        if pipes[i][j] not in "IO" and (i, j) not in path:
+            print(pipes[i][j], i, j)
+        total += 1
+
+print_grid(pipes)
 print(inside, outside, len(path), total, inside + outside + len(path)) #343 5537 13720 19600 19600
