@@ -1,3 +1,5 @@
+# This is a brute force solution
+
 import sys
 
 sys.setrecursionlimit(10000)
