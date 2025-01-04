@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 rocks = []
 
 
@@ -81,15 +83,38 @@ def calculate_total():
         total += (M - i) * t.count("O")
     return total
 
+def to_string(rocks):
+    rock = ""
+    for i in range(M):
+        for j in range(N):
+            rock += rocks[i][j]
+    return rock
+
+
+previous = defaultdict(int)
+def get_first():
+    i = 0
+    loads = []
+    while True:
+        cycle()
+        rocks_string = to_string(rocks)
+        if rocks_string in previous:
+            if previous[rocks_string] == 2:
+                return i, loads
+            loads.append(calculate_total())
+
+        previous[rocks_string] += 1
+        i += 1
+
+
+first, loads = get_first()
+# print("Loads", len(loads), first, first - len(loads), loads)
 
 CYCLE = 1000000000
-FIRST = 122
-PERIOD = 22
-for i in range(FIRST):
-    cycle()
-    print(i, calculate_total())
+FIRST = first
+PERIOD = len(loads)
 
-for i in range(1, PERIOD + 1):
+for i in range(2, PERIOD):
     cycle()
-    if i == ((1000000000 - 122) % 22):
-        print(calculate_total())
+    if i == ((1000000000 - FIRST) % PERIOD):
+        print(calculate_total()) # 106390, 99291
