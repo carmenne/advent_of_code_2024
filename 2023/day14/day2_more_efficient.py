@@ -31,77 +31,59 @@ def in_bounds(i, j):
 
 def tilt_n(rocks):
     for j in range(N):
-        pos_i, pos_j = 0, j
+        pos_i = -1
         for i in range(M):
             if rocks[i][j] in "#":
                 pos_i, pos_j = i, j
             if rocks[i][j] == "O":
-
-                if rocks[pos_i][pos_j] == "#":
-                    pos_i += 1
-                if in_bounds(pos_i, pos_j):
-                    tmp = rocks[i][j]
-                    rocks[i][j] = rocks[pos_i][pos_j]
-                    rocks[pos_i][pos_j] = tmp
                 pos_i += 1
+                rocks[i][j] = "."
+                rocks[pos_i][j] = "O"
 
     return rocks
 
 
 def tilt_w(rocks):
     for i in range(M):
-        pos_i, pos_j = i, 0
+        pos_j = -1
         for j in range(N):
             if rocks[i][j] in "#":
                 pos_i, pos_j = i, j
             if rocks[i][j] == "O":
-
-                if rocks[pos_i][pos_j] == "#":
-                    pos_j += 1
-                if in_bounds(pos_i, pos_j):
-                    tmp = rocks[i][j]
-                    rocks[i][j] = rocks[pos_i][pos_j]
-                    rocks[pos_i][pos_j] = tmp
                 pos_j += 1
+                rocks[i][j] = "."
+                rocks[i][pos_j] = "O"
 
     return rocks
 
 
 def tilt_s(rocks):
     for j in range(N):
-        pos_i, pos_j =  M - 1, j
+        pos_i = M
         for i in range(M - 1, -1, -1):
             if rocks[i][j] in "#":
                 pos_i, pos_j = i, j
             if rocks[i][j] == "O":
-
-                if rocks[pos_i][pos_j] == "#":
-                    pos_i -= 1
-                if in_bounds(pos_i, pos_j):
-                    tmp = rocks[i][j]
-                    rocks[i][j] = rocks[pos_i][pos_j]
-                    rocks[pos_i][pos_j] = tmp
                 pos_i -= 1
+                rocks[i][j] = "."
+                rocks[pos_i][j] = "O"
 
     return rocks
+
 
 def tilt_e(rocks):
     for i in range(M):
-        pos_i, pos_j = i, N - 1
+        pos_j = N
         for j in range(N - 1, -1, -1):
             if rocks[i][j] in "#":
-                pos_i, pos_j = i, j
+                pos_j = j
             if rocks[i][j] == "O":
-
-                if rocks[pos_i][pos_j] == "#":
-                    pos_j -= 1
-                if in_bounds(pos_i, pos_j):
-                    tmp = rocks[i][j]
-                    rocks[i][j] = rocks[pos_i][pos_j]
-                    rocks[pos_i][pos_j] = tmp
                 pos_j -= 1
+                rocks[i][j] = "."
+                rocks[i][pos_j] = "O"
 
     return rocks
+
 
 def count_total():
     count_zero = 0
@@ -116,13 +98,9 @@ total = 0
 
 def cycle():
     tilt_n(rocks)
-    # print_grid(rocks)
     tilt_w(rocks)
-    # print_grid(rocks)
     tilt_s(rocks)
-    # print_grid(rocks)
     tilt_e(rocks)
-    # print_grid(rocks)
 
 
 def calculate_total():
